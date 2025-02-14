@@ -41,9 +41,8 @@ RUN wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement
     chmod +x /usr/local/bin/systemctl && \
     chown abc:abc /usr/local/bin/systemctl
 
-# Upgrade pip and install required Python packages.
-RUN pip install --upgrade pip --break-system-packages && \
-    pip install --upgrade setuptools --break-system-packages && \
+# Upgrade required Python packages (excluding pip) and install nodeenv.
+RUN pip install --upgrade setuptools --break-system-packages && \
     pip install --upgrade distlib --break-system-packages && \
     pip install nodeenv --break-system-packages
 
