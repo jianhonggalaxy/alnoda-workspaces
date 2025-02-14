@@ -31,7 +31,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl  \
     && chown -R abc /usr/local/bin/systemctl \ 
     && echo "------------------------------------------------------ Python" \
-    && apt-get install -y python3-distutils \
     && apt-get install -y python3-pip \
     && pip install --upgrade pip \
     && pip install --upgrade setuptools \
