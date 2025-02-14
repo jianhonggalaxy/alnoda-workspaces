@@ -9,9 +9,6 @@ RUN echo "------------------------------------------------------ Docker" && \
     echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list && \
     apt-get update && \
     apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin && \
-    echo "------------------------------------------------------ Docker-ctop" && \
-    wget -qO /usr/local/bin/docker-ctop https://github.com/bcicen/docker-ctop/releases/download/v0.7.2/docker-ctop-0.7.2-linux-amd64 && \
-    chmod +x /usr/local/bin/docker-ctop && \
     echo "------------------------------------------------------ Lazydocker" && \
     wget -P /tmp https://github.com/jesseduffield/lazydocker/releases/download/v0.16.7/lazydocker_0.16.7_Linux_x86.tar.gz && \
     mkdir /tmp/lazydocker && tar -xzf /tmp/lazydocker_0.16.7_Linux_x86.tar.gz -C /tmp/lazydocker && \
