@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 COPY unified-supervisord.conf supervisord.conf /etc/supervisord/
 COPY mc.ini /home/abc/.config/mc/ini
