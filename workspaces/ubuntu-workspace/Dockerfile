@@ -8,7 +8,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y update \ 
     && echo "------------------------------------------------------ Common" \
     && apt-get install -y sudo jq git \
-    && apt-get install -y curl wget telnet netcat dnsutils \
+    && apt-get install -y curl wget telnet netcat-traditional dnsutils \
     && apt-get install -y software-properties-common \
     && apt-get install -y zip gzip tar \
     && apt-get install -y gdebi-core \
