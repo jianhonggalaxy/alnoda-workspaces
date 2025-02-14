@@ -5,31 +5,42 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      build_ubuntu_workspace:
+        description: 'Build and push ubuntu-workspace image'
+        required: true
+        default: 'true'
+      build_ubuntu_docker_workspace:
+        description: 'Build and push ubuntu-docker-workspace image'
+        required: true
+        default: 'true'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Docker Login
-      uses: docker/login-action@v3.3.0
-      with:
-        username: jianhonglee783
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Docker Login
+        uses: docker/login-action@v3.3.0
+        with:
+          username: jianhonglee783
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push Docker image for ubuntu-workspace
-      uses: docker/build-push-action@v4
-      with:
-        context: ./workspaces/ubuntu-workspace   # update with your actual subdirectory path
-        push: true
-        tags: jianhonglee783/ubuntu-workspace:24.04  # update with your Docker Hub repo details
+      - name: Build and push Docker image for ubuntu-workspace
+        if: ${{ github.event.inputs.build_ubuntu_workspace == 'true' }}
+        uses: docker/build-push-action@v4
+        with:
+          context: ./workspaces/ubuntu-workspace
+          push: true
+          tags: jianhonglee783/ubuntu-workspace:24.04
 
-    - name: Build and push Docker image for ubuntu-docker-workspace
-      uses: docker/build-push-action@v4
-      with:
-        context: ./workspaces/ubuntu-docker-workspace   # update with your actual subdirectory path
-        push: true
-        tags: jianhonglee783/ubuntu-docker-workspace:24.04  # update with your Docker Hub repo details
+      - name: Build and push Docker image for ubuntu-docker-workspace
+        if: ${{ github.event.inputs.build_ubuntu_docker_workspace == 'true' }}
+        uses: docker/build-push-action@v4
+        with:
+          context: ./workspaces/ubuntu-docker-workspace
+          push: true
+          tags: jianhonglee783/ubuntu-docker-workspace:24.04
