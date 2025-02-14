@@ -140,7 +140,7 @@ RUN git config --global credential.helper cache && \
     chmod +x /tmp/nix.sh && \
     sh /tmp/nix.sh --no-daemon && \
     rm /tmp/nix.sh && \
-    sudo apt-get update && sudo apt-get install -y python3.10-venv && \
+    sudo apt-get update && sudo apt-get install -y python3-venv && \
     python3 -m pip install --user pipx --break-system-packages && \
     python3 -m pipx ensurepath
 

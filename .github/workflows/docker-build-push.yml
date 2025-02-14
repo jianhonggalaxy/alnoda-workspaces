@@ -26,6 +26,8 @@ jobs:
         context: ./workspaces/ubuntu-workspace   # update with your actual subdirectory path
         push: true
         tags: jianhonglee783/ubuntu-workspace:24.04  # update with your Docker Hub repo details
+        cache-from: type=registry,ref=jianhonglee783/ubuntu-workspace:cache
+        cache-to: type=registry,ref=jianhonglee783/ubuntu-workspace:cache,mode=max
 
     - name: Build and push Docker image for ubuntu-docker-workspace
       uses: docker/build-push-action@v4
