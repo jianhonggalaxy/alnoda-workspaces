@@ -151,7 +151,7 @@ ENV PATH="/home/abc/.nix-profile/bin:${PATH}"
 
 # Install additional packages via pipx and asdf.
 RUN echo "------------------------------------------------------ after PATH updates" && \
-    pipx install rich-cli --break-system-packages && \
+    pipx install rich-cli && \
     echo 'alias p="rich"' >> /home/abc/.zshrc && \
     nix-env -iA cachix -f https://cachix.org/api/v1/install && \
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3 && \
